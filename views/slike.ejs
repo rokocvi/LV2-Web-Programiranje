@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Galerija</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/style_slike.css">
+</head>
+<body>
+    <header>
+    <h1>🎬 Filmoteka</h1>
+
+    <div class="nav-wrapper">
+
+      <label class="nav-toggle-label" for="nav-toggle" aria-label="Otvori navigacijski izbornik">
+        ☰ Izbornik
+      </label>
+
+      <input type="checkbox" id="nav-toggle" aria-hidden="true">
+
+      <nav aria-label="Primarna navigacija" role="navigation">
+        <ul class="nav-menu" role="list">
+          <li role="listitem"><a href="/" aria-current="page">Početna</a></li>
+          <li role="listitem"><a href="/grafikon">Grafikoni</a></li>
+          <li role="listitem"><a href="/slike">Galerija</a></li>
+        </ul>
+      </nav>
+
+    </div>
+</header>
+
+<h1>Galerija slika</h1>
+
+<div class="gallery">
+    <% images.forEach(image => { %>
+        <div class="card">
+            <img src="/<%= image.file %>" alt="<%= image.name %>">
+            <p><%= image.name %></p>
+        </div>
+    <% }) %>
+</div>
+
+</body>
+</html>

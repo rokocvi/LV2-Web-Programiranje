@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grafikoni – Filmoteka</title>
+
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/grafikon.css">
+</head>
+<body>
+
+<header>
+  <h1>📊 Filmoteka – Vizualizacija podataka</h1>
+
+  <div class="nav-wrapper">
+    <label class="nav-toggle-label" for="nav-toggle">☰ Izbornik</label>
+    <input type="checkbox" id="nav-toggle">
+
+    <nav>
+    <ul class="nav-menu" role="list">
+          <li role="listitem"><a href="/" aria-current="page">Početna</a></li>
+          <li role="listitem"><a href="grafikon.html">Grafikoni</a></li>
+          <li role="listitem"><a href="/slike">Galerija</a></li>
+        </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="grafikon-container">
+
+  <h2>Distribucija filmova po žanru</h2>
+
+  <!-- PIE CHART -->
+  <div class="pie-chart">
+    <div class="tooltip t1">Komedija 30%</div>
+    <div class="tooltip t2">Drama 25%</div>
+    <div class="tooltip t3">Akcija 15%</div>
+    <div class="tooltip t4">Ostalo 30%</div>
+  </div>
+
+  <!-- BAR CHART -->
+  <div class="bar-chart">
+    <div class="bar" style="--value: 30%"><span>Komedija</span></div>
+    <div class="bar" style="--value: 25%"><span>Drama</span></div>
+    <div class="bar" style="--value: 15%"><span>Akcija</span></div>
+    <div class="bar" style="--value: 30%"><span>Ostalo</span></div>
+  </div>
+
+</main>
+
+<footer>
+  <p>
+    &copy; 2025. Web Programiranje – LV1 |
+   <li role="listitem"><a href="/" aria-current="page">Početna</a></li>
+    <li role="listitem"><a href="/slike">Galerija</a></li>
+  </p>
+</footer>
+
+</body>
+</html>

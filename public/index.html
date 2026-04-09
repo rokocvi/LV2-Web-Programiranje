@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <!--dodati meta tag bitan za stranicu-->
+    <!--dodati link za css dokumente -->
+    <title>Primjer HTML5 stranice</title>
+</head>
+<body>
+<header>
+    <h1>🎬 Filmoteka</h1>
+
+    <div class="nav-wrapper">
+
+      <label class="nav-toggle-label" for="nav-toggle" aria-label="Otvori navigacijski izbornik">
+        ☰ Izbornik
+      </label>
+
+      <input type="checkbox" id="nav-toggle" aria-hidden="true">
+
+      <nav aria-label="Primarna navigacija" role="navigation">
+        <ul class="nav-menu" role="list">
+          <li role="listitem"><a href="/" aria-current="page">Početna</a></li>
+          <li role="listitem"><a href="grafikon.html">Grafikoni</a></li>
+          <li role="listitem"><a href="/slike">Galerija</a></li>
+        </ul>
+      </nav>
+
+    </div>
+</header>
+
+<div class="uvodni-clanak">
+  <article aria-labelledby="clanak-naslov">
+    <h2 id="clanak-naslov">O ovoj stranici</h2>
+    <p>
+      Dobrodošli na Filmoteku – pregled klasičnih filmova iz cijelog svijeta.
+      Stranica prikazuje popis filmova s ocjenama, žanrovima i osnovnim informacijama.
+      Koristite navigaciju za pristup grafikonima i galeriji slika.
+    </p>
+  </article>
+</div>
+
+<main>
+  <div class="glavni-grid">
+
+    <section class="sekcija-filmovi" aria-labelledby="naslov-filmovi">
+      <h2 id="naslov-filmovi">Popis Filmova</h2>
+
+      <table class="tablica-filmovi"
+             role="table"
+             aria-label="Popis filmova s osnovnim informacijama">
+        <thead>
+          <tr role="row">
+            <th scope="col" role="columnheader">ID</th>
+            <th scope="col" role="columnheader">Naslov</th>
+            <th scope="col" role="columnheader">Godina</th>
+            <th scope="col" role="columnheader">Žanr</th>
+            <th scope="col" role="columnheader">Trajanje</th>
+            <th scope="col" role="columnheader">Država</th>
+            <th scope="col" role="columnheader">Ocjena</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>Bugs Bunny's Third Movie</td><td>1982</td><td>Animacija</td><td>76 min</td><td>SAD</td><td>7.7</td></tr>
+          <tr><td>3</td><td>18 anni tra una settimana</td><td>1991</td><td>Drama</td><td>98 min</td><td>Italija</td><td>6.5</td></tr>
+          <tr><td>17</td><td>Ride a Wild Pony</td><td>1976</td><td>Romantični</td><td>91 min</td><td>SAD</td><td>5.7</td></tr>
+          <tr><td>18</td><td>Diner</td><td>1982</td><td>Komedija</td><td>95 min</td><td>SAD</td><td>7.0</td></tr>
+          <tr><td>20</td><td>A che servono questi quattrini?</td><td>1942</td><td>Komedija</td><td>85 min</td><td>Italija</td><td>5.9</td></tr>
+          <tr><td>22</td><td>A ciascuno il suo</td><td>1967</td><td>Drama</td><td>93 min</td><td>Italija</td><td>7.6</td></tr>
+          <tr><td>23</td><td>Dead-Bang</td><td>1989</td><td>Krimić</td><td>109 min</td><td>SAD</td><td>6.0</td></tr>
+          <tr><td>24</td><td>A... come assassino</td><td>1966</td><td>Triler</td><td>80 min</td><td>Italija</td><td>5.2</td></tr>
+          <tr><td>26</td><td>At Close Range</td><td>1986</td><td>Drama</td><td>115 min</td><td>SAD</td><td>7.5</td></tr>
+          <tr><td>30</td><td>A Ghentar si muore facile</td><td>1968</td><td>Avantura</td><td>101 min</td><td>Italija</td><td>4.8</td></tr>
+          <tr><td>32</td><td>Sleeping with the Enemy</td><td>1990</td><td>Drama</td><td>96 min</td><td>SAD</td><td>5.0</td></tr>
+          <tr><td>34</td><td>In Bed With Madonna</td><td>1990</td><td>Dokumentarni</td><td>111 min</td><td>SAD</td><td>5.3</td></tr>
+          <tr><td>36</td><td>Bowery at Midnight</td><td>1942</td><td>Horor</td><td>62 min</td><td>SAD</td><td>5.1</td></tr>
+          <tr><td>37</td><td>A mezzanotte va la ronda del piacere</td><td>1975</td><td>Komedija</td><td>100 min</td><td>Italija</td><td>5.8</td></tr>
+          <tr><td>38</td><td>Mr. Majestyk</td><td>1974</td><td>Akcija</td><td>105 min</td><td>SAD</td><td>6.2</td></tr>
+          <tr><td>45</td><td>Warning Sign</td><td>1985</td><td>Akcija</td><td>99 min</td><td>SAD</td><td>4.8</td></tr>
+          <tr><td>47</td><td>About Last Night</td><td>1986</td><td>Komedija</td><td>113 min</td><td>SAD</td><td>5.9</td></tr>
+          <tr><td>49</td><td>Fail-Safe</td><td>1964</td><td>Drama</td><td>110 min</td><td>SAD</td><td>8.2</td></tr>
+          <tr><td>51</td><td>Some Like It Hot</td><td>1959</td><td>Komedija</td><td>120 min</td><td>SAD</td><td>9.1</td></tr>
+        </tbody>
+      </table>
+
+      <a href="/grafikon" class="btn-vise" role="button">
+        Pogledaj grafikone →
+      </a>
+    </section>
+
+    <aside aria-label="Galerija filmskih slika">
+      <h3>Galerija slika</h3>
+
+      <div class="aside-slika-wrapper">
+        <picture>
+          <source media="(max-width: 768px)" srcset="/images/2.jpg" type="image/jpeg">
+          <img src="/images/1.jpg"
+               alt="Kino dvorana s filmskim platnom i sjedalima – simbol filmske umjetnosti"
+               loading="lazy"
+               width="400"
+               height="160">
+        </picture>
+        <p class="aside-opis">Klasično kino iskustvo</p>
+      </div>
+
+      <div class="aside-slika-wrapper">
+        <picture>
+          <source media="(max-width: 768px)" srcset="/images/4.jpg" type="image/jpeg">
+          <img src="/images/3.jpg"
+               alt="Filmski koluti i kamera – rekviziti iz klasične filmske produkcije"
+               loading="lazy"
+               width="400"
+               height="160">
+        </picture>
+        <p class="aside-opis">Filmska produkcija</p>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<footer role="contentinfo">
+  <p>
+    &copy; 2025. Web Programiranje – LV1 |
+    <a href="/grafikon.html">Grafikoni</a> |
+    <a href="/slike">Galerija</a>
+  </p>
+</footer>
+
+</body>
+</html>
