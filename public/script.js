@@ -236,7 +236,7 @@ function potvrdiPosudbu() {
 
   const broj = kosarica.length;
 
-  // Poruka potvrde unutar modala
+
   const sadrzaj = document.getElementById('modal-sadrzaj');
   sadrzaj.innerHTML = `
     <div class="potvrda-poruka">
@@ -251,7 +251,6 @@ function potvrdiPosudbu() {
   kosarica = [];
   osvjeziBadge();
 
-  // Vrati sve gumbe u tablici
   document.querySelectorAll('.btn-dodaj--aktivan').forEach(gumb => {
     gumb.textContent = '+ Košarica';
     gumb.disabled = false;
@@ -261,7 +260,6 @@ function potvrdiPosudbu() {
 
 function zatvoriIResetiraj() {
   zatvoriModal();
-  // Vrati modal sadržaj na original nakon animacije
   setTimeout(() => {
     const sadrzaj = document.getElementById('modal-sadrzaj');
     sadrzaj.innerHTML = `
@@ -273,7 +271,6 @@ function zatvoriIResetiraj() {
         <button class="btn-filtriraj" id="btn-potvrdi">🎬 Potvrdi posudbu</button>
       </div>
     `;
-    // Povežimo event listener opet
     document.getElementById('btn-potvrdi')?.addEventListener('click', potvrdiPosudbu);
   }, 300);
 }
