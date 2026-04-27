@@ -1,5 +1,3 @@
-
-
 /* Opći stilovi */
 body {
     font-family: Arial, sans-serif;
@@ -22,19 +20,11 @@ header h1 {
     font-size: 1.6rem;
 }
 
-/* =============================================
-   PADAJUĆI IZBORNIK BEZ JS-a
-   Koristimo :hover na .nav-wrapper tako da
-   izbornik ostane vidljiv kada se miš pomakne
-   s gumba na samu navigaciju (+ selektor i
-   :hover na više elemenata istovremeno)
-============================================= */
 .nav-wrapper {
     display: inline-block;
     position: relative;
 }
 
-/* Gumb koji izgleda kao "☰ Izbornik" */
 .nav-toggle-label {
     display: inline-block;
     background: #444;
@@ -52,12 +42,10 @@ header h1 {
     background: #3498db;
 }
 
-/* Checkbox je nevidljiv ali funkcionalan */
 #nav-toggle {
     display: none;
 }
 
-/* Navigacija – skrivena po defaultu */
 .nav-wrapper nav {
     position: absolute;
     top: calc(100% + 4px);
@@ -74,7 +62,6 @@ header h1 {
     z-index: 100;
 }
 
-/* Otvori kad je checkbox označen (klik na label) */
 #nav-toggle:checked + nav {
     opacity: 1;
     pointer-events: auto;
@@ -122,27 +109,14 @@ nav .nav-menu a {
     margin-top: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    /* Animacija pojavljivanja sadržaja pri učitavanju */
     animation: slide-up 0.5s ease both;
 }
 
-/* CSS animacija – sadržaj se pojavljuje s fade-in i slide-up */
 @keyframes slide-up {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-/* =============================================
-   GRID RASPORED – tablica + aside
-   Desktop: tablica lijevo, aside desno
-   Mobile: vertikalni stek
-============================================= */
 .glavni-grid {
     display: grid;
     grid-template-columns: 1fr 220px;
@@ -152,7 +126,7 @@ nav .nav-menu a {
 }
 
 /* =============================================
-   STILIZACIJA TABLICE
+   TABLICE
 ============================================= */
 .tablica-filmovi {
     width: 100%;
@@ -161,7 +135,6 @@ nav .nav-menu a {
     margin-top: 12px;
 }
 
-/* Zaglavlje tablice */
 .tablica-filmovi thead tr {
     background: #222;
     border-bottom: 3px solid #3498db;
@@ -176,16 +149,9 @@ nav .nav-menu a {
     white-space: nowrap;
 }
 
-/* Izmjenične boje redova */
-.tablica-filmovi tbody tr:nth-child(odd) {
-    background: #f9f9f9;
-}
+.tablica-filmovi tbody tr:nth-child(odd)  { background: #f9f9f9; }
+.tablica-filmovi tbody tr:nth-child(even) { background: #eef4fb; }
 
-.tablica-filmovi tbody tr:nth-child(even) {
-    background: #eef4fb;
-}
-
-/* Hover efekt na redovima – transformacija boje i lijevog ruba */
 .tablica-filmovi tbody tr {
     transition: background 0.15s, transform 0.15s;
     border-left: 3px solid transparent;
@@ -194,7 +160,6 @@ nav .nav-menu a {
 .tablica-filmovi tbody tr:hover {
     background: #d6eaf8;
     border-left: 3px solid #3498db;
-    /* Blago horizontalno pomicanje retka na hover – CSS transformacija */
     transform: translateX(4px);
 }
 
@@ -204,21 +169,17 @@ nav .nav-menu a {
     color: #333;
 }
 
-/* Ocjena – istaknuta plavom bojom */
-.tablica-filmovi td:last-child {
-    color: #2980b9;
-    font-weight: bold;
-}
+.tablica-filmovi td:last-child { color: #2980b9; font-weight: bold; }
+.tablica-filmovi td:first-child { color: #999; font-size: 0.8rem; }
 
-/* ID kolona – prigušenija */
-.tablica-filmovi td:first-child {
-    color: #999;
-    font-size: 0.8rem;
+.loading-cell {
+    text-align: center;
+    padding: 2rem;
+    color: #888;
 }
 
 /* =============================================
-   INTERAKTIVNI GUMB (bez JS-a)
-   CSS :hover transformacija
+   GUMBI
 ============================================= */
 .btn-vise {
     display: inline-block;
@@ -232,7 +193,6 @@ nav .nav-menu a {
     font-size: 0.88rem;
     cursor: pointer;
     text-decoration: none;
-    /* Tranzicija za hover efekt */
     transition: background 0.2s, color 0.2s, transform 0.15s;
 }
 
@@ -243,7 +203,7 @@ nav .nav-menu a {
 }
 
 /* =============================================
-   ASIDE – Galerija slika
+   ASIDE
 ============================================= */
 aside {
     background: #f0f0f0;
@@ -262,7 +222,6 @@ aside h3 {
     border-bottom: 2px solid #3498db;
 }
 
-/* Wrapper za slike – overflow hidden za zoom efekt */
 .aside-slika-wrapper {
     position: relative;
     overflow: hidden;
@@ -276,22 +235,16 @@ aside h3 {
     border-radius: 6px;
     height: 140px;
     object-fit: cover;
-    /* Prozirnost i tranzicija – CSS značajke slike */
     opacity: 0.88;
     transition: opacity 0.3s ease, transform 0.4s ease;
 }
 
-/* Hover: povećanje prozirnosti i blago zumiranje (CSS transformacija) */
 .aside-slika-wrapper:hover img {
     opacity: 1;
     transform: scale(1.06);
 }
 
-.aside-opis {
-    font-size: 0.78rem;
-    color: #666;
-    margin-top: 4px;
-}
+.aside-opis { font-size: 0.78rem; color: #666; margin-top: 4px; }
 
 /* =============================================
    UVODNI ČLANAK
@@ -312,19 +265,23 @@ aside h3 {
     animation: slide-up 0.4s ease both;
 }
 
-.uvodni-clanak article h2 {
-    font-size: 1rem;
-    color: #2980b9;
-    margin-bottom: 4px;
-}
-
-.uvodni-clanak article p {
-    color: #555;
-    font-size: 0.9rem;
-}
+.uvodni-clanak article h2 { font-size: 1rem; color: #2980b9; margin-bottom: 4px; }
+.uvodni-clanak article p  { color: #555; font-size: 0.9rem; }
 
 /* =============================================
-   Flexbox za podatke (zadržano iz originala)
+   FOOTER
+============================================= */
+footer {
+    margin-top: 30px;
+    padding: 10px;
+    background: #222;
+    color: white;
+}
+
+footer a { color: #3498db; }
+
+/* =============================================
+   OSTALI ORIGINALNI STILOVI
 ============================================= */
 .data-container {
     display: flex;
@@ -334,20 +291,13 @@ aside h3 {
     margin-top: 20px;
 }
 
-/* Kružni grafikon - CSS samo (zadržano iz originala) */
 .pie-chart {
-    width: 150px;
-    height: 150px;
+    width: 150px; height: 150px;
     border-radius: 50%;
-    background: conic-gradient(
-        #3498db 0% 40%,
-        #2ecc71 40% 75%,
-        #f1c40f 75% 100%
-    );
+    background: conic-gradient(#3498db 0% 40%, #2ecc71 40% 75%, #f1c40f 75% 100%);
     margin: 0 auto;
 }
 
-/* Flexbox analiza sekcija (zadržano iz originala) */
 .analysis-flex {
     display: flex;
     justify-content: space-around;
@@ -360,19 +310,13 @@ aside h3 {
     background: #e3e3e3;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
     flex: 1;
     min-width: 250px;
     max-width: 300px;
 }
 
-/* Flexbox za kontakt formu (zadržano iz originala) */
-.form-flex {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-}
+.form-flex { display: flex; flex-direction: column; gap: 10px; align-items: center; }
 
 input, button {
     width: 80%;
@@ -389,123 +333,16 @@ button {
     width: 50%;
 }
 
-button:hover {
-    background-color: #2980b9;
-}
+button:hover { background-color: #2980b9; }
 
-/* =============================================
-   FOOTER (zadržano iz originala)
-============================================= */
-footer {
-    margin-top: 30px;
-    padding: 10px;
-    background: #222;
-    color: white;
-}
-
-footer a {
-    color: #3498db;
-}
-
-/* =============================================
-   RESPONZIVNOST
-============================================= */
-@media (max-width: 768px) {
-    /* Aside ide ispod tablice na mobileu */
-    .glavni-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .sekcija-filmovi {
-        order: 1;
-    }
-
-    aside {
-        order: 2;
-    }
-
-    .content {
-        padding: 20px;
-    }
-
-    .uvodni-clanak {
-        padding: 0 20px;
-    }
-
-    /* Sakrij ID i Trajanje stupce na mobileu */
-    .tablica-filmovi th:nth-child(1),
-    .tablica-filmovi td:nth-child(1),
-    .tablica-filmovi th:nth-child(5),
-    .tablica-filmovi td:nth-child(5) {
-        display: none;
-    }
-
-    .tablica-filmovi {
-        font-size: 0.78rem;
-    }
-
-    .data-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .analysis-flex {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .nav-menu {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .form-flex input, .form-flex button {
-        width: 100%;
-    }
-
-    .aside-slika-wrapper img {
-        height: 180px;
-    }
-}
-
-@media (max-width: 480px) {
-    /* Sakrij i Državu na vrlo malim ekranima */
-    .tablica-filmovi th:nth-child(6),
-    .tablica-filmovi td:nth-child(6) {
-        display: none;
-    }
-}
-
-/* Override – sprječava nasljeđivanje header color: white na nav linkove */
-.nav-wrapper nav ul li a {
-    color: #f1c40f !important;
-}
-
-.nav-wrapper nav ul li a:hover {
-    color: #f1c40f !important;
-    background: #3498db;
-}
-
-/* POZADINA I FONT */
 body {
     background: linear-gradient(to right, #eef2f3, #dfe9f3);
     font-family: Arial, sans-serif;
     margin: 0;
 }
 
-/* NASLOV */
-h1 {
-    text-align: center;
-    margin: 30px 0;
-    font-size: 2rem;
-    color: #333;
-}
+h1 { text-align: center; margin: 30px 0; font-size: 2rem; color: #333; }
 
-/* GALERIJA GRID */
-/* POZADINA I FONT */
-
-
-/* GALERIJA GRID */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -513,7 +350,6 @@ h1 {
     padding: 20px 40px;
 }
 
-/* KARTICA */
 .card {
     background: #ffffff;
     border-radius: 15px;
@@ -525,29 +361,20 @@ h1 {
     flex-direction: column;
 }
 
-/* HOVER EFEKT */
-.card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
+.card:hover { transform: scale(1.03); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
 
-/* SLIKE */
 .card img {
     width: 100%;
-    height: auto; /* Omogućava cijelu sliku da se vidi */
-    max-height: 250px; /* Ograničava visinu kartice */
-    object-fit: contain; /* Cijela slika će se vidjeti unutar okvira */
+    height: auto;
+    max-height: 250px;
+    object-fit: contain;
     display: block;
     transition: transform 0.3s ease;
-    background-color: #f0f0f0; /* Pozadina za manje slike */
+    background-color: #f0f0f0;
 }
 
-/* ZOOM NA SLICI */
-.card:hover img {
-    transform: scale(1.05);
-}
+.card:hover img { transform: scale(1.05); }
 
-/* TEKST ISPOD SLIKE */
 .card p {
     text-align: center;
     padding: 12px;
@@ -557,14 +384,222 @@ h1 {
     margin: 0;
 }
 
-/* MOBILE OPTIMIZACIJA */
-@media (max-width: 600px) {
-    .gallery {
-        padding: 10px;
-        gap: 15px;
-    }
+/* Override nav linkova */
+.nav-wrapper nav ul li a { color: #f1c40f !important; }
+.nav-wrapper nav ul li a:hover { color: #f1c40f !important; background: #3498db; }
 
-    .card img {
-        max-height: 180px;
-    }
+/* =============================================
+   LV3 – FILTERI (3.2)
+   Isti stil kao ostatak stranice
+============================================= */
+.sekcija-filteri {
+    background: white;
+    border-radius: 10px;
+    padding: 20px 30px;
+    max-width: 1100px;
+    margin: 20px auto 0;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+    text-align: left;
+    animation: slide-up 0.5s ease both;
+}
+
+.sekcija-filteri h2 {
+    font-size: 1rem;
+    color: #2980b9;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-left: 4px solid #3498db;
+    padding-left: 10px;
+}
+
+.filteri-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 16px;
+}
+
+.filter-grupa {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filter-grupa > label {
+    font-size: 0.82rem;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* Text input – isti izgled kao ostali inputi na stranici */
+.filter-grupa input[type="text"] {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.88rem;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.filter-grupa input[type="text"]:focus {
+    border-color: #3498db;
+}
+
+/* Slider */
+.filter-grupa input[type="range"] {
+    width: 100%;
+    accent-color: #3498db;
+    cursor: pointer;
+}
+
+.slider-oznake {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: #999;
+}
+
+/* Radio gumbi – pill style */
+.radio-grupa {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.radio-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 5px 12px;
+    border-radius: 20px;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    user-select: none;
+}
+
+.radio-label:has(input:checked) {
+    background: #3498db;
+    border-color: #3498db;
+    color: white;
+}
+
+.radio-label input[type="radio"] {
+    display: none;
+}
+
+/* Gumbi filtera – isti kao .btn-vise */
+.filteri-gumbi {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-filtriraj {
+    width: auto;
+    padding: 8px 22px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.88rem;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    transition: background 0.2s, transform 0.15s;
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-filtriraj:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+.btn-reset {
+    width: auto;
+    padding: 8px 22px;
+    background: transparent;
+    color: #3498db;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.88rem;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-reset:hover {
+    background: #3498db;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Info badge */
+.film-count {
+    display: inline-block;
+    background: #eef4fb;
+    color: #2980b9;
+    border: 1px solid #c5dff5;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.sekcija-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    text-align: left;
+}
+
+.sekcija-header h2 {
+    font-size: 1rem;
+    color: #2980b9;
+    margin: 0;
+}
+
+/* =============================================
+   RESPONZIVNOST
+============================================= */
+@media (max-width: 768px) {
+    .glavni-grid { grid-template-columns: 1fr; }
+    .sekcija-filmovi { order: 1; }
+    aside { order: 2; }
+    .content { padding: 20px; }
+    .uvodni-clanak { padding: 0 20px; }
+
+    .tablica-filmovi th:nth-child(1),
+    .tablica-filmovi td:nth-child(1),
+    .tablica-filmovi th:nth-child(5),
+    .tablica-filmovi td:nth-child(5) { display: none; }
+
+    .tablica-filmovi { font-size: 0.78rem; }
+    .data-container  { flex-direction: column; align-items: center; }
+    .analysis-flex   { flex-direction: column; align-items: center; }
+    .nav-menu        { flex-direction: column; text-align: center; }
+    .form-flex input, .form-flex button { width: 100%; }
+    .aside-slika-wrapper img { height: 180px; }
+
+    .filteri-grid { grid-template-columns: 1fr; }
+    .sekcija-filteri { padding: 16px 20px; }
+}
+
+@media (max-width: 480px) {
+    .tablica-filmovi th:nth-child(6),
+    .tablica-filmovi td:nth-child(6) { display: none; }
+
+    .gallery { padding: 10px; gap: 15px; }
+    .card img { max-height: 180px; }
 }

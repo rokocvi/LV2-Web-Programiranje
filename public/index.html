@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Filmoteka – pregled klasičnih filmova iz cijelog svijeta">
     <link rel="stylesheet" href="styles/style.css">
-    <!-- PapaParse mora biti u <head>, PRIJE script.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <title>Filmoteka</title>
 </head>
@@ -14,13 +13,13 @@
 <header>
     <h1>🎬 Filmoteka</h1>
     <div class="nav-wrapper">
-      <label class="nav-toggle-label" for="nav-toggle" aria-label="Otvori navigacijski izbornik">☰ Izbornik</label>
+      <label class="nav-toggle-label" for="nav-toggle">☰ Izbornik</label>
       <input type="checkbox" id="nav-toggle" aria-hidden="true">
       <nav aria-label="Primarna navigacija" role="navigation">
         <ul class="nav-menu" role="list">
-          <li role="listitem"><a href="/" aria-current="page">Početna</a></li>
-          <li role="listitem"><a href="grafikon.html">Grafikoni</a></li>
-          <li role="listitem"><a href="/slike">Galerija</a></li>
+          <li><a href="/" aria-current="page">Početna</a></li>
+          <li><a href="grafikon.html">Grafikoni</a></li>
+          <li><a href="/slike">Galerija</a></li>
         </ul>
       </nav>
     </div>
@@ -29,47 +28,95 @@
 <div class="uvodni-clanak">
   <article aria-labelledby="clanak-naslov">
     <h2 id="clanak-naslov">O ovoj stranici</h2>
-    <p>
-      Dobrodošli na Filmoteku – pregled klasičnih filmova iz cijelog svijeta.
-      Podaci se dinamički dohvaćaju iz CSV datoteke i prikazuju u pregledniku pomoću JavaScripta.
+    <p>Dobrodošli na Filmoteku – pregled klasičnih filmova iz cijelog svijeta.
     </p>
   </article>
 </div>
 
-<main>
+<!-- FILTERI (3.2) -->
+<section class="sekcija-filteri" aria-labelledby="naslov-filteri">
+  <h2 id="naslov-filteri">🔍 Filtriranje filmova</h2>
 
-  <section class="sekcija-filmovi" aria-labelledby="naslov-filmovi">
-    <div class="sekcija-header">
-      <h2 id="naslov-filmovi">Popis Filmova</h2>
-      <span class="film-count" id="film-count-info">Učitavanje...</span>
+  <div class="filteri-grid">
+
+    <!-- Filter 1: Text input – pretraga po naslovu -->
+    <div class="filter-grupa">
+      <label for="filter-naslov">Pretraži naslov</label>
+      <input type="text" id="filter-naslov" placeholder="npr. The Godfather..." autocomplete="off">
     </div>
 
-    <div class="tablica-wrapper">
-      <table id="filmovi-tablica" class="tablica-filmovi"
-             role="table"
-             aria-label="Popis filmova dohvaćenih iz CSV datoteke">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Naslov</th>
-            <th scope="col">Žanr</th>
-            <th scope="col">Godina</th>
-            <th scope="col">Trajanje</th>
-            <th scope="col">Redatelj</th>
-            <th scope="col">Zemlja</th>
-            <th scope="col">Ocjena</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td colspan="8" class="loading-cell">⏳ Učitavanje filmova...</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- Filter 2: Range slider – minimalna ocjena -->
+    <div class="filter-grupa">
+      <label for="filter-ocjena">
+        Minimalna ocjena: <strong id="ocjena-vrijednost">8.5</strong>
+      </label>
+      <input type="range" id="filter-ocjena" min="8.0" max="9.5" step="0.1" value="8.5">
+      <div class="slider-oznake">
+        <span>8.0</span><span>8.5</span><span>9.0</span><span>9.5</span>
+      </div>
     </div>
-  </section>
 
-</main>
+    <!-- Filter 3: Radio gumbi – zemlja porijekla -->
+    <div class="filter-grupa">
+      <label>Zemlja porijekla</label>
+      <div class="radio-grupa">
+        <label class="radio-label">
+          <input type="radio" name="filter-zemlja" value="" checked> Sve
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="filter-zemlja" value="USA"> 🇺🇸 USA
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="filter-zemlja" value="UK"> 🇬🇧 UK
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="filter-zemlja" value="Italy"> 🇮🇹 Italy
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="filter-zemlja" value="Japan"> 🇯🇵 Japan
+        </label>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="filteri-gumbi">
+    <button id="btn-filtriraj" class="btn-filtriraj">Filtriraj</button>
+    <button id="btn-reset" class="btn-reset">Resetiraj</button>
+  </div>
+</section>
+
+<!-- TABLICA (3.1) -->
+<div class="content">
+  <div class="sekcija-header">
+    <h2>Popis Filmova</h2>
+    <span class="film-count" id="film-count-info">Učitavanje...</span>
+  </div>
+
+  <div style="overflow-x: auto;">
+    <table id="filmovi-tablica" class="tablica-filmovi"
+           role="table"
+           aria-label="Popis filmova">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Naslov</th>
+          <th scope="col">Žanr</th>
+          <th scope="col">Godina</th>
+          <th scope="col">Trajanje</th>
+          <th scope="col">Redatelj</th>
+          <th scope="col">Zemlja</th>
+          <th scope="col">Ocjena</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="8" class="loading-cell">⏳ Učitavanje filmova...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <footer role="contentinfo">
   <p>
@@ -80,6 +127,5 @@
 </footer>
 
 <script src="script.js"></script>
-
 </body>
 </html>
