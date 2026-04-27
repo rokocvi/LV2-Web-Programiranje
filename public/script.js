@@ -59,7 +59,7 @@ function prikaziTablicu(filmovi) {
 
   filmovi.forEach((film, index) => {
     const row = document.createElement('tr');
-    
+
     const uKorarici = kosarica.some(k => k.naslov === film.naslov);
 
     row.innerHTML = `
@@ -132,21 +132,19 @@ function filtriraj() {
 // 3.3 – Košarica
 // --------------------------------------------------
 function postaviKosaricu() {
-  // Otvori modal
   document.getElementById('btn-otvori-kosaricu')?.addEventListener('click', () => {
     osvjeziModalKosaricu();
     document.getElementById('modal-kosarica').classList.add('modal--otvoren');
   });
 
-  // Zatvori modal klikom na X
   document.getElementById('btn-zatvori-modal')?.addEventListener('click', zatvoriModal);
 
-  // Zatvori modal klikom izvan sadržaja
+
   document.getElementById('modal-kosarica')?.addEventListener('click', (e) => {
     if (e.target.id === 'modal-kosarica') zatvoriModal();
   });
 
-  // Potvrdi posudbu
+
   document.getElementById('btn-potvrdi')?.addEventListener('click', potvrdiPosudbu);
 }
 
@@ -155,15 +153,13 @@ function zatvoriModal() {
 }
 
 function dodajUKosaricu(index, gumb) {
-  // index se odnosi na trenutno prikazane filmove — dohvati pravi film
-  const tbodyRedovi = document.querySelectorAll('#filmovi-tablica tbody tr');
   const redak = gumb.closest('tr');
   const naslov = redak.querySelector('.naslov-cell').textContent;
 
   const film = sviFilmovi.find(f => f.naslov === naslov);
   if (!film) return;
 
-  // Sprječava duplikate
+
   if (kosarica.some(k => k.naslov === film.naslov)) return;
 
   kosarica.push(film);
@@ -173,7 +169,6 @@ function dodajUKosaricu(index, gumb) {
   gumb.disabled = true;
   gumb.classList.add('btn-dodaj--aktivan');
 
-  // Ažuriraj badge na gumbu košarice
   osvjeziBadge();
 }
 
@@ -252,7 +247,7 @@ function potvrdiPosudbu() {
     </div>
   `;
 
-  // Resetiraj košaricu
+ 
   kosarica = [];
   osvjeziBadge();
 
