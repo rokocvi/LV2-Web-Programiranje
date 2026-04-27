@@ -29,7 +29,7 @@
   <article aria-labelledby="clanak-naslov">
     <h2 id="clanak-naslov">O ovoj stranici</h2>
     <p>Dobrodošli na Filmoteku – pregled klasičnih filmova iz cijelog svijeta.
-    </p>
+    Podaci se dinamički dohvaćaju iz CSV datoteke i prikazuju pomoću JavaScripta.</p>
   </article>
 </div>
 
@@ -38,14 +38,11 @@
   <h2 id="naslov-filteri">🔍 Filtriranje filmova</h2>
 
   <div class="filteri-grid">
-
-    <!-- Filter 1: Text input – pretraga po naslovu -->
     <div class="filter-grupa">
       <label for="filter-naslov">Pretraži naslov</label>
       <input type="text" id="filter-naslov" placeholder="npr. The Godfather..." autocomplete="off">
     </div>
 
-    <!-- Filter 2: Range slider – minimalna ocjena -->
     <div class="filter-grupa">
       <label for="filter-ocjena">
         Minimalna ocjena: <strong id="ocjena-vrijednost">8.5</strong>
@@ -56,33 +53,29 @@
       </div>
     </div>
 
-    <!-- Filter 3: Radio gumbi – zemlja porijekla -->
     <div class="filter-grupa">
       <label>Zemlja porijekla</label>
       <div class="radio-grupa">
-        <label class="radio-label">
-          <input type="radio" name="filter-zemlja" value="" checked> Sve
-        </label>
-        <label class="radio-label">
-          <input type="radio" name="filter-zemlja" value="USA"> 🇺🇸 USA
-        </label>
-        <label class="radio-label">
-          <input type="radio" name="filter-zemlja" value="UK"> 🇬🇧 UK
-        </label>
-        <label class="radio-label">
-          <input type="radio" name="filter-zemlja" value="Italy"> 🇮🇹 Italy
-        </label>
-        <label class="radio-label">
-          <input type="radio" name="filter-zemlja" value="Japan"> 🇯🇵 Japan
-        </label>
+        <label class="radio-label"><input type="radio" name="filter-zemlja" value="" checked> Sve</label>
+        <label class="radio-label"><input type="radio" name="filter-zemlja" value="USA"> 🇺🇸 USA</label>
+        <label class="radio-label"><input type="radio" name="filter-zemlja" value="UK"> 🇬🇧 UK</label>
+        <label class="radio-label"><input type="radio" name="filter-zemlja" value="Italy"> 🇮🇹 Italy</label>
+        <label class="radio-label"><input type="radio" name="filter-zemlja" value="Japan"> 🇯🇵 Japan</label>
       </div>
     </div>
-
   </div>
 
-  <div class="filteri-gumbi">
-    <button id="btn-filtriraj" class="btn-filtriraj">Filtriraj</button>
-    <button id="btn-reset" class="btn-reset">Resetiraj</button>
+  <div class="filteri-akcije">
+    <div class="filteri-gumbi">
+      <button id="btn-filtriraj" class="btn-filtriraj">Filtriraj</button>
+      <button id="btn-reset" class="btn-reset">Resetiraj</button>
+    </div>
+
+    <!-- Gumb košarice (3.3) -->
+    <button id="btn-otvori-kosaricu" class="btn-kosarica">
+      🛒 Košarica
+      <span id="kosarica-badge" style="display:none;">0</span>
+    </button>
   </div>
 </section>
 
@@ -94,9 +87,7 @@
   </div>
 
   <div style="overflow-x: auto;">
-    <table id="filmovi-tablica" class="tablica-filmovi"
-           role="table"
-           aria-label="Popis filmova">
+    <table id="filmovi-tablica" class="tablica-filmovi" role="table" aria-label="Popis filmova">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -107,14 +98,35 @@
           <th scope="col">Redatelj</th>
           <th scope="col">Zemlja</th>
           <th scope="col">Ocjena</th>
+          <th scope="col">Akcija</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td colspan="8" class="loading-cell">⏳ Učitavanje filmova...</td>
-        </tr>
+        <tr><td colspan="9" class="loading-cell">⏳ Učitavanje filmova...</td></tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<!-- MODAL KOŠARICA (3.3) -->
+<div id="modal-kosarica" class="modal-overlay">
+  <div class="modal-sadrzaj" role="dialog" aria-modal="true" aria-labelledby="modal-naslov">
+
+    <div class="modal-header">
+      <h2 id="modal-naslov">🛒 Moja košarica</h2>
+      <button id="btn-zatvori-modal" class="btn-zatvori">✕</button>
+    </div>
+
+    <div id="modal-sadrzaj">
+      <p id="kosarica-prazan" style="color:#888; text-align:center; padding: 20px 0;">
+        Košarica je prazna. Dodajte filmove iz tablice.
+      </p>
+      <ul id="kosarica-lista"></ul>
+      <div id="kosarica-footer">
+        <button class="btn-filtriraj" id="btn-potvrdi">🎬 Potvrdi posudbu</button>
+      </div>
+    </div>
+
   </div>
 </div>
 

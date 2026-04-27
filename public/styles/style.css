@@ -603,3 +603,223 @@ h1 { text-align: center; margin: 30px 0; font-size: 2rem; color: #333; }
     .gallery { padding: 10px; gap: 15px; }
     .card img { max-height: 180px; }
 }
+
+/* =============================================
+   LV3 – 3.3 KOŠARICA
+============================================= */
+
+/* Gumb za otvaranje košarice */
+.filteri-akcije {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.btn-kosarica {
+    width: auto;
+    position: relative;
+    padding: 8px 20px;
+    background: #222;
+    color: white;
+    border: 2px solid #222;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.88rem;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    transition: background 0.2s, transform 0.15s;
+    outline: none;
+}
+
+.btn-kosarica:hover {
+    background: #3498db;
+    border-color: #3498db;
+    transform: translateY(-2px);
+}
+
+/* Badge s brojem filmova */
+#kosarica-badge {
+    display: inline-block;
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.72rem;
+    line-height: 20px;
+    text-align: center;
+    margin-left: 6px;
+    font-weight: bold;
+}
+
+/* Gumb dodaj u košaricu u tablici */
+.btn-dodaj {
+    width: auto;
+    padding: 4px 10px;
+    background: transparent;
+    color: #3498db;
+    border: 1.5px solid #3498db;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+    outline: none;
+}
+
+.btn-dodaj:hover {
+    background: #3498db;
+    color: white;
+}
+
+.btn-dodaj--aktivan {
+    background: #2ecc71;
+    color: white;
+    border-color: #2ecc71;
+    cursor: default;
+}
+
+/* =============================================
+   MODAL
+============================================= */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+}
+
+.modal-overlay.modal--otvoren {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.modal-sadrzaj {
+    background: white;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 520px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    animation: slideDown 0.25s ease;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-30px); opacity: 0; }
+    to   { transform: translateY(0);     opacity: 1; }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 2px solid #3498db;
+    background: #222;
+    border-radius: 10px 10px 0 0;
+}
+
+.modal-header h2 {
+    color: white;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.btn-zatvori {
+    width: auto;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 2px 8px;
+    border-radius: 4px;
+    transition: background 0.15s;
+    outline: none;
+}
+
+.btn-zatvori:hover { background: #e74c3c; }
+
+/* Lista filmova u košarici */
+#modal-sadrzaj {
+    padding: 16px 20px;
+}
+
+#kosarica-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+}
+
+.kosarica-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    gap: 10px;
+}
+
+.kosarica-item:last-child { border-bottom: none; }
+
+.kosarica-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.kosarica-item-naslov {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #222;
+}
+
+.kosarica-item-detalji {
+    font-size: 0.78rem;
+    color: #888;
+}
+
+.btn-ukloni {
+    width: auto;
+    background: transparent;
+    border: 1.5px solid #e74c3c;
+    color: #e74c3c;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    transition: background 0.15s, color 0.15s;
+    flex-shrink: 0;
+    outline: none;
+}
+
+.btn-ukloni:hover { background: #e74c3c; color: white; }
+
+#kosarica-footer {
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+    display: none;
+}
+
+/* Poruka potvrde */
+.potvrda-poruka {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.potvrda-ikona { font-size: 3rem; margin-bottom: 10px; }
+.potvrda-poruka h3 { font-size: 1.2rem; color: #222; margin-bottom: 8px; }
+.potvrda-poruka p  { color: #555; font-size: 0.9rem; }
