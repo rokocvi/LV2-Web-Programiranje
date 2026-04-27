@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
   postaviKosaricu();
 });
 
-
+// --------------------------------------------------
 // 3.1 – Dohvat i parsiranje CSV-a
-
+// --------------------------------------------------
 function ucitajFilmove() {
   fetch('movies.csv')
     .then(res => res.text())
@@ -59,8 +59,7 @@ function prikaziTablicu(filmovi) {
 
   filmovi.forEach((film, index) => {
     const row = document.createElement('tr');
-
-    // Provjeri je li film već u košarici
+    
     const uKorarici = kosarica.some(k => k.naslov === film.naslov);
 
     row.innerHTML = `
@@ -139,13 +138,16 @@ function postaviKosaricu() {
     document.getElementById('modal-kosarica').classList.add('modal--otvoren');
   });
 
- 
+  // Zatvori modal klikom na X
   document.getElementById('btn-zatvori-modal')?.addEventListener('click', zatvoriModal);
 
+  // Zatvori modal klikom izvan sadržaja
   document.getElementById('modal-kosarica')?.addEventListener('click', (e) => {
     if (e.target.id === 'modal-kosarica') zatvoriModal();
   });
 
+  // Potvrdi posudbu
+  document.getElementById('btn-potvrdi')?.addEventListener('click', potvrdiPosudbu);
 }
 
 function zatvoriModal() {
@@ -153,7 +155,7 @@ function zatvoriModal() {
 }
 
 function dodajUKosaricu(index, gumb) {
-  
+  // index se odnosi na trenutno prikazane filmove — dohvati pravi film
   const tbodyRedovi = document.querySelectorAll('#filmovi-tablica tbody tr');
   const redak = gumb.closest('tr');
   const naslov = redak.querySelector('.naslov-cell').textContent;
@@ -264,7 +266,7 @@ function potvrdiPosudbu() {
 
 function zatvoriIResetiraj() {
   zatvoriModal();
- 
+  // Vrati modal sadržaj na original nakon animacije
   setTimeout(() => {
     const sadrzaj = document.getElementById('modal-sadrzaj');
     sadrzaj.innerHTML = `
@@ -276,6 +278,7 @@ function zatvoriIResetiraj() {
         <button class="btn-filtriraj" id="btn-potvrdi">🎬 Potvrdi posudbu</button>
       </div>
     `;
+    // Povežimo event listener opet
     document.getElementById('btn-potvrdi')?.addEventListener('click', potvrdiPosudbu);
   }, 300);
 }
